@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum type : String {
+enum CellType : String {
     
     case O = "O"
     case X = "X"
@@ -27,39 +27,39 @@ enum OXGameState : String {
 class OXGame    {
     
     //the board data, stored in a 1D array
-    private var board = [type](count: 9, repeatedValue: type.EMPTY)
+    private var board = [CellType](count: 9, repeatedValue: CellType.EMPTY)
     //the type of O or X that plays first
-    private var startType:type = type.X
+    private var startType:CellType = CellType.X
     
     //returns the number of turns the players have had on the board
     private func turn() -> Int {
-        return board.filter{(pos) in (pos != type.EMPTY)}.count
+        return board.filter{(pos) in (pos != CellType.EMPTY)}.count
     }
     
     //returns if its X or O's turn to play
-    func whosTurn()  -> type {
+    func whosTurn()  -> CellType {
         let count = turn()
         if (count % 2 == 0)   {
             return startType
         }   else    {
             
-            if (startType == type.X)    {
-                return type.O
+            if (startType == CellType.X)    {
+                return CellType.O
             }   else    {
-                return type.X
+                return CellType.X
             }
         }
         
     }
     
     //returns user type at a specific board index
-    func typeAtIndex(pos:Int) -> type! {
+    func typeAtIndex(pos:Int) -> CellType! {
         return board[pos]
     }
     
     //one of the later functions created in the demo
     //execute the move in the game
-    func playMove(position:Int) -> type! {
+    func playMove(position:Int) -> CellType! {
         board[position] = whosTurn()
         return board[position]
     }
@@ -119,7 +119,7 @@ class OXGame    {
     
     //restart the game
     func reset()    {
-        board = [type](count: 9, repeatedValue: type.EMPTY)
+        board = [CellType](count: 9, repeatedValue: CellType.EMPTY)
         print("Reseting")
     }
     
