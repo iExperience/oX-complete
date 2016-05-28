@@ -26,11 +26,58 @@ class BoardViewController: UIViewController {
         
         print("boardWasTapped at index: " + String(sender.tag))
         
+        if(String(gameObject.typeAtIndex(sender.tag)) != "EMPTY"){
+            return
+        }
+        
+        let move = gameObject.playMove(sender.tag)
+        
+        if let moveToPrint = move   {
+            sender.setTitle("\(moveToPrint)", forState: UIControlState.Normal)
+        }
+        
+        if let moveToPrint = move   {
+            sender.setTitle("\(moveToPrint)", forState: UIControlState.Normal)
+        }
+        
+        let state = gameObject.state()
+        
+        if (state == OXGameState.complete_someone_won) {
+            //                let winner = game.whosTurn()
+            let winner = move
+            let message = "\(winner) won the game"
+            let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action) in
+                self.restartGame()
+            }))
+        } else if (state == OXGameState.complete_no_one_won) {
+            let message = "Game tied!"
+            let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action) in
+                self.restartGame()
+            }))
+        }
+        
     }
-    
     @IBAction func newGameWasTapped(sender: AnyObject) {
         
         print("newGameWasTapped")
+        self.restartGame()
+        
+    }
+    
+    func restartGame()  {
+        
+        //reset model
+        gameObject.reset()
+        //reset UI
+        for view in boardView.subviews  {
+            if let button = view as? UIButton   {
+                button.setTitle("", forState: UIControlState.Normal)
+            }
+        }
         
     }
 
