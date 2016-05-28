@@ -107,13 +107,13 @@
 		42D447CC1CD765670070326E /* NoughtsAndCrosses */ = {
 			isa = PBXGroup;
 			children = (
-				427A5B651CE0FF4A00328EE7 /* Model */,
 				42D447CD1CD765670070326E /* AppDelegate.swift */,
 				FBDE70821CF87AD00025275C /* BoardViewController.swift */,
 				FBDE70831CF87AD00025275C /* BoardViewController.xib */,
 				42D447D41CD765670070326E /* Assets.xcassets */,
 				42D447D61CD765670070326E /* LaunchScreen.storyboard */,
 				42D447D91CD765670070326E /* Info.plist */,
+				427A5B651CE0FF4A00328EE7 /* Model */,
 			);
 			path = NoughtsAndCrosses;
 			sourceTree = "<group>";

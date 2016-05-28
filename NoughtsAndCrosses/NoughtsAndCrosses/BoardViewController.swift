@@ -12,6 +12,7 @@ class BoardViewController: UIViewController {
     
     @IBOutlet var boardView: UIView!
     
+    var gameObject = OXGame()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class BoardViewController: UIViewController {
         print("boardWasTapped at index: " + String(sender.tag))
         
     }
+    
     @IBAction func newGameWasTapped(sender: AnyObject) {
         
         print("newGameWasTapped")
