@@ -10,26 +10,12 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
-    @IBOutlet var boardView: UIView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    @IBAction func boardWasTapped(sender: AnyObject) {
-        
-        print("boardWasTapped at index: " + String(sender.tag))
-        
-    }
-    @IBAction func newGameWasTapped(sender: AnyObject) {
-        
-        print("newGameWasTapped")
-        
     }
 
 }
